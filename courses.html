@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary Meta Tags & SEO -->
+  <title>Premium Math Courses | EST Math | Eyad Mahmoud Mohamed</title>
+  <meta name="title" content="Premium Math Courses | EST Math">
+  <meta name="description" content="Enroll in premium EST Math bootcamps and foundation courses led by Eyad Mahmoud Mohamed to boost your skills and achieve top scores through rigorous training.">
+  <meta name="keywords" content="EST Math courses, math foundation course, EST exam bootcamp, Eyad Mahmoud Mohamed, math tutoring Egypt">
+  <meta name="author" content="Eyad Mahmoud Mohamed">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="EST Math Homepage">
+        <div class="brand-icon-box">EST</div>
+        <div class="brand-text">
+          <span class="brand-title">EST <span>Math</span></span>
+          <span class="brand-subtitle">Smart Math with Eyad Mahmoud</span>
+        </div>
+      </a>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+
+      <!-- Main Navigation Menu -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="explanations.html" class="nav-link">Lessons</a></li>
+          <li><a href="courses.html" class="nav-link active">Courses</a></li>
+          <li><a href="consultation.html" class="nav-link">Consultations</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <section class="section" style="padding-bottom: 2rem; background: linear-gradient(180deg, rgba(37,99,235,0.05) 0%, transparent 100%);">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2.5rem;">
+          <span class="section-tag">Premium Programs</span>
+          <h1 class="section-title">Available Training Courses</h1>
+          <p class="section-subtitle">
+            Structured bootcamps taking you from foundational basics to mastering the hardest standardized test problems with direct mentorship and curated question banks.
+          </p>
+        </div>
+
+        <!-- Banner Features -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem 2rem; margin-bottom: 3rem; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; text-align: center; box-shadow: var(--shadow-sm);">
+          <div>
+            <span style="font-size: 1.2rem;">🎯</span>
+            <strong style="display: block; font-size: 0.95rem; margin-top: 0.2rem;">Up-to-Date Curriculum</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Aligned with current EST standards</span>
+          </div>
+          <div style="border-left: 1px solid var(--border-color); padding-left: 2rem;">
+            <span style="font-size: 1.2rem;">⚡</span>
+            <strong style="display: block; font-size: 0.95rem; margin-top: 0.2rem;">Smart &amp; Fast Solutions</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Save valuable exam time</span>
+          </div>
+          <div style="border-left: 1px solid var(--border-color); padding-left: 2rem;">
+            <span style="font-size: 1.2rem;">👨‍🏫</span>
+            <strong style="display: block; font-size: 0.95rem; margin-top: 0.2rem;">Mentorship by Eyad Mahmoud</strong>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Answers to all your questions</span>
+          </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="courses-grid" id="coursesGrid">
+          <!-- Dynamically populated by js/courses.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Consultation Promo Section -->
+    <section class="section" style="padding-top: 2rem;">
+      <div class="container">
+        <div style="background: linear-gradient(135deg, #1e3a8a, #0f172a); border-radius: var(--radius-xl); padding: 3.5rem 2.5rem; color: #ffffff; text-align: center; box-shadow: var(--shadow-xl);">
+          <span class="badge badge-accent" style="margin-bottom: 1rem;">Private 1-on-1</span>
+          <h2 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 1rem;">Looking for a Personalized Study Plan?</h2>
+          <p style="color: #cbd5e1; max-width: 650px; margin: 0 auto 2rem; font-size: 1.1rem; line-height: 1.7;">
+            Need help on a specific concept, want to diagnose your weak spots before test day, or need an exam review session? Schedule a private consultation with instructor <strong>Eyad Mahmoud Mohamed</strong>.
+          </p>
+          <a href="consultation.html" class="btn btn-white">Book a Private Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Course Details Modal -->
+  <div class="modal-backdrop" id="courseDetailsModal" role="dialog" aria-modal="true" aria-labelledby="detailsModalTitle">
+    <div class="modal-container modal-container-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="detailsModalTitle">Course Details</h3>
+        <button class="modal-close-btn" data-close-modal="courseDetailsModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="aspect-ratio: 16 / 9; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem; background-color: var(--primary-dark);">
+          <img id="detailsModalPoster" src="images/courses/course-1.svg" alt="Course Cover" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <div id="detailsModalStats" style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.25rem;">
+          <!-- Populated by JS -->
+        </div>
+
+        <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">About This Course:</h4>
+        <p id="detailsModalDesc" style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.75rem;">
+          <!-- Populated by JS -->
+        </p>
+
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-main);">What You Will Master (Learning Objectives):</h4>
+        <ul id="detailsModalObjectives" style="margin-bottom: 1.75rem; list-style: none; padding: 0;">
+          <!-- Populated by JS -->
+        </ul>
+
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-main);">Course Modules &amp; Syllabus:</h4>
+        <ul id="detailsModalSyllabus" style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" data-close-modal="courseDetailsModal">Back</button>
+        <button id="detailsModalBookBtn" class="btn btn-primary">Enroll in This Course</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Access Modal -->
+  <div class="modal-backdrop" id="passwordModal" role="dialog" aria-modal="true" aria-labelledby="passwordModalHeading">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="passwordModalHeading">Enter Password</h3>
+        <button class="modal-close-btn" data-close-modal="passwordModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="passwordForm" novalidate>
+          <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.6; text-align: center;">
+            Please enter the password to access the course videos
+          </p>
+
+          <div class="form-group">
+            <input 
+              type="password" 
+              id="coursePassword" 
+              class="form-control" 
+              placeholder="Enter password here..." 
+              required
+              autocomplete="off"
+              style="font-size: 1.1rem; padding: 0.875rem 1rem; text-align: center;">
+            <div class="invalid-feedback">Incorrect password. Please try again.</div>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary btn-block">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-icon-box">EST</div>
+            <div class="brand-text">
+              <span class="brand-title" style="color: #ffffff;">EST <span style="color: #38bdf8;">Math</span></span>
+            </div>
+          </div>
+          <p>
+            Specialized educational platform simplifying mathematics for EST standardized test learners through premium courses and lessons.
+          </p>
+          <span class="footer-founder-badge">
+            Led &amp; Founded by: <strong>Eyad Mahmoud Mohamed</strong>
+          </span>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="explanations.html" class="footer-link">Video Lessons</a></li>
+            <li><a href="courses.html" class="footer-link">Premium Courses</a></li>
+            <li><a href="consultation.html" class="footer-link">Book Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="explanations.html" class="footer-link">Curriculum Explanations</a></li>
+            <li><a href="explanations.html" class="footer-link">Daily Practice Problems</a></li>
+            <li><a href="explanations.html" class="footer-link">Official Exam Solutions</a></li>
+            <li><a href="consultation.html" class="footer-link">1-on-1 Academic Tutoring</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Social & Contact -->
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Follow our channels and get in touch to inquire about courses and consultation schedules:
+          </p>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook" aria-label="Facebook">f</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Instagram">ig</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube" aria-label="YouTube">yt</a>
+            <a href="https://wa.me/201204856591" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp" aria-label="WhatsApp">wa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 EST Math - All Rights Reserved | Supervised by <strong>Eyad Mahmoud Mohamed</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/courses.js"></script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary Meta Tags & SEO -->
+  <title>Book a Consultation | EST Math | Eyad Mahmoud Mohamed</title>
+  <meta name="title" content="Book an Academic Consultation | EST Math">
+  <meta name="description" content="Schedule a 1-on-1 private mathematics consultation with instructor Eyad Mahmoud Mohamed to resolve your challenging problems, review past exams, and master difficult lessons.">
+  <meta name="keywords" content="math consultation, private math tutoring EST, EST prep help, Eyad Mahmoud Mohamed, online math tutor Egypt">
+  <meta name="author" content="Eyad Mahmoud Mohamed">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="EST Math Homepage">
+        <div class="brand-icon-box">EST</div>
+        <div class="brand-text">
+          <span class="brand-title">EST <span>Math</span></span>
+          <span class="brand-subtitle">Smart Math with Eyad Mahmoud</span>
+        </div>
+      </a>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+
+      <!-- Main Navigation Menu -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="explanations.html" class="nav-link">Lessons</a></li>
+          <li><a href="courses.html" class="nav-link">Courses</a></li>
+          <li><a href="consultation.html" class="nav-link active">Consultations</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         Page Header
+         ========================================================================== -->
+    <section class="section" style="padding-bottom: 2rem; background: linear-gradient(180deg, rgba(37,99,235,0.05) 0%, transparent 100%);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Direct Academic Mentorship</span>
+          <h1 class="section-title">Have a Math Question or Academic Challenge You Need Help With?</h1>
+          <p class="section-subtitle">
+            You can submit a consultation request and our team will get in touch to assist you step-by-step and solve your study challenges in the most effective way.
+          </p>
+        </div>
+
+        <div class="consultation-wrapper">
+          <!-- Consultation Form Card -->
+          <div class="consultation-form-card">
+            
+            <!-- Success Confirmation Banner -->
+            <div id="consultationSuccessAlert" class="success-box" style="display: none; padding: 2rem 1rem;">
+              <div class="success-icon-circle">✓</div>
+              <h3>Your consultation request has been submitted successfully, and we will contact you shortly.</h3>
+              <p>
+                Thank you for trusting <strong>EST Math</strong>. Your consultation request has been recorded under reference ID: 
+                <strong id="refNumberDisplay" class="text-primary" style="display: block; font-size: 1.2rem; margin-top: 0.3rem;"></strong>
+              </p>
+              <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; text-align: left;">
+                Instructor <strong>Eyad Mahmoud Mohamed</strong> or an academic coordinator will contact you by phone or WhatsApp within 24 hours to schedule your consultation session and review your question details.
+              </div>
+              <button class="btn btn-outline btn-block" onclick="resetConsultationForm()">
+                Submit Another Request
+              </button>
+            </div>
+
+            <!-- Form Element -->
+            <form id="consultationForm" novalidate>
+              <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+                Consultation Request Details
+              </h2>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.75rem;">
+                Please fill in the form accurately so we can assist you promptly.
+              </p>
+
+              <!-- Full Name -->
+              <div class="form-group">
+                <label class="form-label" for="fullName">
+                  <span>Full Name <span class="req">*</span></span>
+                </label>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  class="form-control" 
+                  placeholder="Enter your full name" 
+                  required>
+                <div class="invalid-feedback">Please enter your full name (at least 3 characters).</div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  <span>Email Address <span class="req">*</span></span>
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  class="form-control" 
+                  placeholder="name@example.com" 
+                  required>
+                <div class="invalid-feedback">Please enter a valid email address to receive consultation updates.</div>
+              </div>
+
+              <!-- Phone Number -->
+              <div class="form-group">
+                <label class="form-label" for="phone">
+                  <span>Phone Number <span class="req">*</span></span>
+                  <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(WhatsApp enabled preferred)</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  class="form-control" 
+                  placeholder="e.g. 01012345678" 
+                  required>
+                <div class="invalid-feedback">Please enter a valid phone number.</div>
+              </div>
+
+              <!-- Consultation Type (Select) -->
+              <div class="form-group">
+                <label class="form-label" for="consultationType">
+                  <span>Consultation Type <span class="req">*</span></span>
+                </label>
+                <select id="consultationType" class="form-control" required>
+                  <option value="" disabled selected>Select consultation category...</option>
+                  <option value="Lesson Explanation">Lesson Explanation</option>
+                  <option value="Problem Solving">Problem Solving</option>
+                  <option value="Exam Review">Exam Review</option>
+                  <option value="Academic Tutoring">Academic Tutoring</option>
+                  <option value="Other Consultation">Other Consultation</option>
+                </select>
+                <div class="invalid-feedback">Please select a consultation type.</div>
+              </div>
+
+              <!-- Consultation Details (Textarea) -->
+              <div class="form-group">
+                <label class="form-label" for="details">
+                  <span>Consultation Details <span class="req">*</span></span>
+                  <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">Describe your question or problem</span>
+                </label>
+                <textarea 
+                  id="details" 
+                  class="form-control" 
+                  placeholder="Please describe the question, topic, unit number, or specific challenge you are facing..." 
+                  rows="5" 
+                  required></textarea>
+                <div class="invalid-feedback">Please provide details regarding your question (at least 10 characters).</div>
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <button type="submit" id="submitConsultationBtn" class="btn btn-primary btn-block">
+                  Submit Consultation Request
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sidebar Benefits & Info -->
+          <aside class="consultation-sidebar">
+            <!-- Box 1: Why book consultation -->
+            <div class="sidebar-box sidebar-box-accent">
+              <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem;">
+                Why Book with Eyad Mahmoud?
+              </h3>
+              <p style="font-size: 0.95rem; line-height: 1.7;">
+                1-on-1 private mentoring provides 100% focused attention to address your unique weaknesses in mathematics.
+              </p>
+
+              <div class="sidebar-list">
+                <div class="sidebar-list-item">
+                  <span class="icon">🎯</span>
+                  <span>Instant skill diagnosis to pinpoint exact curriculum gaps.</span>
+                </div>
+                <div class="sidebar-list-item">
+                  <span class="icon">⚡</span>
+                  <span>Exclusive shortcuts and speed hacks not found in textbook theories.</span>
+                </div>
+                <div class="sidebar-list-item">
+                  <span class="icon">📝</span>
+                  <span>Complete real test review with precise time pacing diagnostics.</span>
+                </div>
+                <div class="sidebar-list-item">
+                  <span class="icon">💬</span>
+                  <span>Live sessions via Google Meet or Zoom with recorded replays provided.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box 2: Working Hours & Response Time -->
+            <div class="sidebar-box">
+              <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">
+                ⏱️ Response Time &amp; Availability
+              </h4>
+              <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+                We pride ourselves on prompt replies to keep your study schedule on track:
+              </p>
+              <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--text-body); display: flex; flex-direction: column; gap: 0.5rem;">
+                <li>• Inquiries Answered: <strong>Within 24 Hours</strong></li>
+                <li>• Working Days: <strong>7 Days a Week</strong></li>
+                <li>• Supervision: <strong>Led directly by Eyad Mahmoud Mohamed</strong></li>
+              </ul>
+            </div>
+
+            <!-- Box 3: Quick Contact -->
+            <div class="sidebar-box" style="background: var(--bg-surface); text-align: center;">
+              <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+                Have an Urgent Inquiry?
+              </h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+                You can also message us directly on WhatsApp for immediate guidance.
+              </p>
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm btn-block">
+                Chat on WhatsApp 💬
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Universal Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-icon-box">EST</div>
+            <div class="brand-text">
+              <span class="brand-title" style="color: #ffffff;">EST <span style="color: #38bdf8;">Math</span></span>
+            </div>
+          </div>
+          <p>
+            Specialized educational platform simplifying mathematics for EST standardized test learners through premium courses and lessons.
+          </p>
+          <span class="footer-founder-badge">
+            Led &amp; Founded by: <strong>Eyad Mahmoud Mohamed</strong>
+          </span>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="explanations.html" class="footer-link">Video Lessons</a></li>
+            <li><a href="courses.html" class="footer-link">Premium Courses</a></li>
+            <li><a href="consultation.html" class="footer-link">Book Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="explanations.html" class="footer-link">Curriculum Explanations</a></li>
+            <li><a href="explanations.html" class="footer-link">Daily Practice Problems</a></li>
+            <li><a href="explanations.html" class="footer-link">Official Exam Solutions</a></li>
+            <li><a href="consultation.html" class="footer-link">1-on-1 Academic Tutoring</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Social & Contact -->
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Follow our channels and get in touch to inquire about courses and consultation schedules:
+          </p>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook" aria-label="Facebook">f</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Instagram">ig</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube" aria-label="YouTube">yt</a>
+            <a href="https://wa.me/201204856591" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp" aria-label="WhatsApp">wa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 EST Math - All Rights Reserved | Supervised by <strong>Eyad Mahmoud Mohamed</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    /**
+     * Consultation Form Validation & Submission Handler (English)
+     * Platform: EST Math
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('consultationForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('fullName');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const typeSelect = document.getElementById('consultationType');
+        const detailsInput = document.getElementById('details');
+        const submitBtn = document.getElementById('submitConsultationBtn');
+
+        let isValid = true;
+
+        // Full Name Validation
+        if (!nameInput.value.trim() || nameInput.value.trim().length < 3) {
+          setError(nameInput, 'Please enter your full name (at least 3 characters).');
+          isValid = false;
+        } else {
+          clearError(nameInput);
+        }
+
+        // Email Validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+          setError(emailInput, 'Please enter a valid email address.');
+          isValid = false;
+        } else {
+          clearError(emailInput);
+        }
+
+        // Phone Validation
+        const phoneRegex = /^[\d+]{8,15}$/;
+        const cleanPhone = phoneInput.value.replace(/[\s-]/g, '');
+        if (!cleanPhone || !phoneRegex.test(cleanPhone)) {
+          setError(phoneInput, 'Please enter a valid phone number.');
+          isValid = false;
+        } else {
+          clearError(phoneInput);
+        }
+
+        // Type Validation
+        if (!typeSelect.value) {
+          setError(typeSelect, 'Please select a consultation category.');
+          isValid = false;
+        } else {
+          clearError(typeSelect);
+        }
+
+        // Details Validation
+        if (!detailsInput.value.trim() || detailsInput.value.trim().length < 10) {
+          setError(detailsInput, 'Please provide details regarding your question (at least 10 characters).');
+          isValid = false;
+        } else {
+          clearError(detailsInput);
+        }
+
+        if (!isValid) return;
+
+        // Loading state
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting Request...';
+
+        const consultationPayload = {
+          fullName: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          phone: cleanPhone,
+          consultationType: typeSelect.value,
+          details: detailsInput.value.trim(),
+          createdAt: new Date().toISOString()
+        };
+
+        // Simulate async submission
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+
+          // Generate reference number
+          const refNumber = 'EST-CON-' + Math.floor(100000 + Math.random() * 900000);
+          document.getElementById('refNumberDisplay').textContent = refNumber;
+
+          // Hide form, show success
+          form.style.display = 'none';
+          document.getElementById('consultationSuccessAlert').style.display = 'block';
+
+          // Trigger toast
+          if (typeof showToast === 'function') {
+            showToast('Your consultation request has been submitted successfully, and we will contact you shortly.', 'success');
+          }
+
+          // Reset form
+          form.reset();
+        }, 900);
+      });
+
+      function setError(input, message) {
+        input.classList.add('is-invalid');
+        const feedback = input.parentElement.querySelector('.invalid-feedback');
+        if (feedback) feedback.textContent = message;
+      }
+
+      function clearError(input) {
+        input.classList.remove('is-invalid');
+      }
+    });
+
+    function resetConsultationForm() {
+      const form = document.getElementById('consultationForm');
+      const successBox = document.getElementById('consultationSuccessAlert');
+      if (form && successBox) {
+        form.style.display = 'block';
+        successBox.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Exam | EST Math</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .exam-wrap { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); margin-bottom: 2rem; }
+    .timer { background: #dc2626; color: #fff; padding: 0.75rem 2rem; border-radius: 999px; font-size: 2rem; font-weight: 900; display: inline-block; }
+    .q { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.25rem; }
+    .opt { border: 2px solid var(--border-color); border-radius: var(--radius-md); padding: 0.875rem 1rem; margin-bottom: 0.75rem; cursor: pointer; display: flex; gap: 0.75rem; align-items: flex-start; }
+    .opt:hover { border-color: var(--primary); background: rgba(37,99,235,0.04); }
+    .opt.active { border-color: var(--primary); background: rgba(37,99,235,0.08); }
+    .opt.correct { border-color: #22c55e; background: rgba(34,197,94,0.08); }
+    .opt.wrong { border-color: #ef4444; background: rgba(239,68,68,0.08); }
+    .dot { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-surface); display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+    .opt.active .dot { background: var(--primary); color: #fff; }
+    .hidden { display: none !important; }
+    .center { text-align: center; }
+    #pdfInput { display: none; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon-box">EST</div>
+        <div class="brand-text"><span class="brand-title">EST <span>Math</span></span><span class="brand-subtitle">Smart Math with Eyad Mahmoud</span></div>
+      </a>
+    </div>
+  </header>
+  <main class="exam-wrap">
+    <!-- Upload -->
+    <section id="uploadPanel" class="panel center">
+      <h1 style="margin-bottom:0.5rem;">AI Exam Generator</h1>
+      <p style="color:var(--text-muted); margin-bottom:2rem;">Upload PDF to generate exam • 60 Minutes • Auto Grade</p>
+      <input type="file" id="pdfInput" accept="application/pdf">
+      <button class="btn btn-primary btn-lg" id="uploadBtn">Upload PDF</button>
+      <p style="margin-top:1rem; color:var(--text-muted); font-size:0.95rem;" id="pdfInfo">PDF: EST 2 HS Math Level 1 Jan 2026.pdf</p>
+      <button class="btn btn-outline" style="margin-top:1rem;" id="usePdfBtn">Use Uploaded PDF</button>
+    </section>
+
+    <!-- Start -->
+    <section id="startPanel" class="panel center hidden">
+      <h2>Exam Ready</h2>
+      <p style="color:var(--text-muted); margin-bottom:2rem;" id="qCount">0 Questions • 60 Minutes</p>
+      <button class="btn btn-primary btn-lg" id="startBtn">Start Exam</button>
+    </section>
+
+    <!-- Exam -->
+    <section id="examPanel" class="hidden">
+      <div class="panel center">
+        <h2>EST Math Exam</h2>
+        <div class="timer" id="timer">60:00</div>
+        <div style="margin-top:1rem;">Question <span id="curNum">1</span> / <span id="totNum">0</span></div>
+      </div>
+      <div id="qBox"></div>
+      <div class="center" style="margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-outline" id="prevBtn">Previous</button>
+        <button class="btn btn-outline" id="nextBtn">Next</button>
+        <button class="btn btn-success" id="submitBtn">Submit Exam</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="resPanel" class="panel center hidden">
+      <h2>Exam Completed!</h2>
+      <div style="font-size:5rem; font-weight:900; color:var(--primary); margin:2rem 0;" id="pct">0%</div>
+      <p style="font-size:1.25rem;">Score: <strong id="corr">0</strong> / <strong id="tot">0</strong> • Grade: <strong id="grade">F</strong></p>
+      <div style="margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="reviewBtn">Review Answers</button>
+        <a href="index.html" class="btn btn-outline">Back to Home</a>
+        <button class="btn btn-outline" onclick="location.reload()">Retry</button>
+      </div>
+    </section>
+
+    <!-- Review -->
+    <section id="revPanel" class="hidden">
+      <div class="panel center">
+        <h2>Answer Review</h2>
+        <button class="btn btn-primary" id="backResBtn">Back to Results</button>
+      </div>
+      <div id="revBox"></div>
+    </section>
+  </main>
+  <!-- Gemini AI Chat Button -->
+  <div id="geminiChatBtn" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: #4285f4; color: white; border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+      <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+    </svg>
+    Ask AI
+  </div>
+
+  <!-- Gemini Chat Modal -->
+  <div id="geminiModal" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: 90vw; height: 500px; background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 1001; flex-direction: column; overflow: hidden;">
+    <div style="background: #4285f4; color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-weight: 600;">Gemini AI Assistant</span>
+      </div>
+      <button id="closeGemini" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
+    </div>
+    <div id="chatMessages" style="flex: 1; padding: 16px; overflow-y: auto; background: #f5f5f5; display: flex; flex-direction: column; gap: 12px;"></div>
+    <div style="padding: 16px; background: white; border-top: 1px solid #e0e0e0; display: flex; gap: 8px;">
+      <input id="chatInput" type="text" placeholder="Ask me anything about math..." style="flex: 1; padding: 10px 12px; border: 1px solid #e0e0e0; border-radius: 8px; outline: none;">
+      <button id="sendChat" style="background: #4285f4; color: white; border: none; border-radius: 8px; padding: 10px 16px; cursor: pointer;">Send</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="js/ai-exam.js"></script>
+  <script src="js/gemini-chat.js"></script>
+</body>
+</html>

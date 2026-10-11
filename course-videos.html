@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Course Videos | EST Math</title>
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .video-player-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2rem;
+    }
+    
+    .video-player-wrap video,
+    .video-player-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .playlist {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    
+    .playlist-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 0.5rem;
+      border: 1px solid transparent;
+    }
+    
+    .playlist-item:hover {
+      background: var(--bg-surface);
+      border-color: var(--border-color);
+    }
+    
+    .playlist-item.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    
+    .playlist-item.active .playlist-title,
+    .playlist-item.active .playlist-number {
+      color: #fff;
+    }
+    
+    .playlist-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: var(--text-main);
+    }
+    
+    .playlist-item.active .playlist-number {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .playlist-title {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    
+    .playlist-duration {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+    
+    .playlist-item.active .playlist-duration {
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .logout-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="EST Math Homepage">
+        <div class="brand-icon-box">EST</div>
+        <div class="brand-text">
+          <span class="brand-title">EST <span>Math</span></span>
+          <span class="brand-subtitle">Smart Math with Eyad Mahmoud</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="explanations.html" class="nav-link">Lessons</a></li>
+          <li><a href="courses.html" class="nav-link active">Courses</a></li>
+          <li><a href="consultation.html" class="nav-link">Consultations</a></li>
+        </ul>
+        <div class="nav-cta">
+          <button class="btn btn-outline btn-sm" id="logoutBtn">Logout</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div style="margin-bottom: 2rem;">
+          <span class="section-tag">Course Content</span>
+          <h1 class="section-title">Course Videos</h1>
+          <p class="section-subtitle">Watch all course lessons in order</p>
+        </div>
+
+        <div class="grid-2" style="gap: 2rem; align-items: start;">
+          <div>
+            <div class="video-player-wrap" id="videoPlayerWrap">
+              <video id="courseVideo" controls autoplay preload="auto" playsinline>
+                <source src="vidio/MATH.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <h2 id="currentVideoTitle" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Introduction</h2>
+              <p style="color: var(--text-muted);">Lesson <span id="currentVideoNum">1</span> of <span id="totalVideos">6</span></p>
+            </div>
+          </div>
+
+          <div class="playlist" id="playlist">
+            <!-- Playlist items will be generated -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const videos = [
+      { id: 1, title: 'Linear & Quadratic Equations Decoded', duration: '32:15', src: 'vidio/MATH.mp4' },
+      { id: 2, title: 'Exam Session', duration: '38:40', src: 'vidio/exam session.mp4' },
+      { id: 3, title: 'Daily Practice: The Most Frequent Exam Traps', duration: '25:10', src: 'vidio/MATH.mp4' },
+      { id: 4, title: 'Function Graphs & Geometric Transformations', duration: '40:05', src: 'vidio/MATH.mp4' },
+      { id: 5, title: 'Exam Time Management & Triage Strategies', duration: '30:45', src: 'vidio/MATH.mp4' },
+      { id: 6, title: 'Final Exam Review & Practice', duration: '45:00', src: 'vidio/MATH.mp4' }
+    ];
+
+    let currentIndex = 0;
+    const videoEl = document.getElementById('courseVideo');
+    const playlistEl = document.getElementById('playlist');
+    const currentTitle = document.getElementById('currentVideoTitle');
+    const currentNum = document.getElementById('currentVideoNum');
+    const totalVideos = document.getElementById('totalVideos');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    function generatePlaylist() {
+      totalVideos.textContent = videos.length;
+      playlistEl.innerHTML = videos.map((v, i) => `
+        <div class="playlist-item ${i === 0 ? 'active' : ''}" data-index="${i}">
+          <div class="playlist-number">${i + 1}</div>
+          <div style="flex: 1;">
+            <div class="playlist-title">${v.title}</div>
+          </div>
+          <span class="playlist-duration">${v.duration}</span>
+        </div>
+      `).join('');
+      
+      document.querySelectorAll('.playlist-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const idx = parseInt(item.dataset.index);
+          playVideo(idx);
+        });
+      });
+    }
+
+    function playVideo(index) {
+      if (index < 0 || index >= videos.length) return;
+      currentIndex = index;
+      const v = videos[index];
+      videoEl.src = v.src;
+      videoEl.play().catch(() => {});
+      currentTitle.textContent = v.title;
+      currentNum.textContent = index + 1;
+      
+      document.querySelectorAll('.playlist-item').forEach(item => {
+        item.classList.toggle('active', parseInt(item.dataset.index) === index);
+      });
+      
+      playlistEl.querySelector(`[data-index="${index}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function checkAuth() {
+      try {
+        if (localStorage.getItem('est_math_access') !== 'true') {
+          window.location.href = 'courses.html';
+        }
+      } catch (e) {
+        window.location.href = 'courses.html';
+      }
+    }
+
+    function logout() {
+      try {
+        localStorage.removeItem('est_math_access');
+      } catch (e) {}
+      window.location.href = 'courses.html';
+    }
+
+    videoEl.addEventListener('ended', () => {
+      if (currentIndex < videos.length - 1) {
+        playVideo(currentIndex + 1);
+      }
+    });
+
+    logoutBtn.addEventListener('click', logout);
+    
+    checkAuth();
+    generatePlaylist();
+    playVideo(0);
+  </script>
+</body>
+</html>

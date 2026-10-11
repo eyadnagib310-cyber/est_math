@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary Meta Tags & SEO -->
+  <title>Video Lessons Library | EST Math | Eyad Mahmoud Mohamed</title>
+  <meta name="title" content="Video Lessons Library | EST Math">
+  <meta name="description" content="Browse the EST Math video library for mathematics explanations, past exam solutions, and daily drills delivered through an intuitive visual approach.">
+  <meta name="keywords" content="EST Math lessons, math video tutorials, EST exam walkthroughs, algebra lessons, geometry solutions, Eyad Mahmoud Mohamed">
+  <meta name="author" content="Eyad Mahmoud Mohamed">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="EST Math Homepage">
+        <div class="brand-icon-box">EST</div>
+        <div class="brand-text">
+          <span class="brand-title">EST <span>Math</span></span>
+          <span class="brand-subtitle">Smart Math with Eyad Mahmoud</span>
+        </div>
+      </a>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+
+      <!-- Main Navigation Menu -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="explanations.html" class="nav-link active">Lessons</a></li>
+          <li><a href="courses.html" class="nav-link">Courses</a></li>
+          <li><a href="consultation.html" class="nav-link">Consultations</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         Page Header
+         ========================================================================== -->
+    <section class="section" style="padding-bottom: 2rem; background: linear-gradient(180deg, rgba(37,99,235,0.05) 0%, transparent 100%);">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <span class="section-tag">Video Library</span>
+          <h1 class="section-title">Educational Lessons &amp; Walkthroughs</h1>
+          <p class="section-subtitle">
+            Curated video lessons, exam walkthroughs, and practical question drills designed in modern YouTube-style formats to simplify challenging math topics.
+          </p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="filter-search-container">
+          <!-- Search Bar -->
+          <div class="search-box-wrap">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              id="explanationsSearch" 
+              class="search-input" 
+              placeholder="Search by topic, keyword, or exam (e.g. Unit 1, Equations, Geometry, Exam)..." 
+              aria-label="Search lessons">
+            <button id="clearSearch" class="clear-search-btn" title="Clear Search">✕</button>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="filter-pills" role="toolbar" aria-label="Filter by category">
+            <span style="font-weight: 700; font-size: 0.95rem; margin-right: 0.5rem; color: var(--text-main);">
+              Category:
+            </span>
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="Math">Math</button>
+            <button class="filter-btn" data-category="Lessons">Lessons</button>
+            <button class="filter-btn" data-category="Practice">Practice</button>
+            <button class="filter-btn" data-category="Past Exams">Past Exams</button>
+          </div>
+        </div>
+
+        <!-- Results Counter & Info -->
+        <div class="results-meta">
+          <span id="resultsCount">Loading lessons...</span>
+          <span>💡 Click any video card to stream the lesson and download free practice notes</span>
+        </div>
+
+        <!-- Video Cards Grid -->
+        <div class="videos-grid" id="explanationsGrid">
+          <!-- Populated dynamically by explanations.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Banner -->
+    <section class="section" style="padding-top: 2rem;">
+      <div class="container">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--text-main);">
+            Can't find the exact problem or lesson you're looking for?
+          </h3>
+          <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 1.5rem;">
+            Book a 1-on-1 private consultation with instructor <strong>Eyad Mahmoud Mohamed</strong> to get personalized explanations and answers to your specific questions.
+          </p>
+          <a href="consultation.html" class="btn btn-primary">Book an Academic Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Watch Video Modal
+       ========================================================================== -->
+  <div class="modal-backdrop" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+    <div class="modal-container modal-container-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="videoModalTitle">Watch Lesson</h3>
+        <button class="modal-close-btn" data-close-modal="videoModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="videoPlayerWrap" class="mock-player-screen" style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <!-- Video player will be injected by JS -->
+        </div>
+
+        <div id="videoModalMeta" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+          <!-- Populated by JS -->
+        </div>
+
+        <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main);">Lesson Details &amp; Key Concepts:</h4>
+        <p id="videoModalDesc" style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+          <!-- Populated by JS -->
+        </p>
+
+        <div style="background: var(--bg-surface); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.5rem;">📄</span>
+            <div>
+              <h5 style="margin: 0; font-size: 0.95rem; font-weight: 800;">Summary &amp; Practice Worksheet (PDF)</h5>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Available for free download to platform students</span>
+            </div>
+          </div>
+          <a href="files/lesson-unit1.pdf" download="EST-Math-Unit1-Solution.pdf" class="btn btn-outline btn-sm">
+            Download PDF
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" data-close-modal="videoModal">Close</button>
+        <a href="#" id="openVideoExternalBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="display: none;">Watch Video</a>
+        <a href="courses.html" class="btn btn-primary btn-sm">Join Complete Course</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Universal Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-icon-box">EST</div>
+            <div class="brand-text">
+              <span class="brand-title" style="color: #ffffff;">EST <span style="color: #38bdf8;">Math</span></span>
+            </div>
+          </div>
+          <p>
+            Specialized educational platform simplifying mathematics for EST standardized test learners through premium courses and lessons.
+          </p>
+          <span class="footer-founder-badge">
+            Led &amp; Founded by: <strong>Eyad Mahmoud Mohamed</strong>
+          </span>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="explanations.html" class="footer-link">Video Lessons</a></li>
+            <li><a href="courses.html" class="footer-link">Premium Courses</a></li>
+            <li><a href="consultation.html" class="footer-link">Book Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="explanations.html" class="footer-link">Curriculum Explanations</a></li>
+            <li><a href="explanations.html" class="footer-link">Daily Practice Problems</a></li>
+            <li><a href="explanations.html" class="footer-link">Official Exam Solutions</a></li>
+            <li><a href="consultation.html" class="footer-link">1-on-1 Academic Tutoring</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Social & Contact -->
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Follow our channels and get in touch to inquire about courses and consultation schedules:
+          </p>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook" aria-label="Facebook">f</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Instagram">ig</a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube" aria-label="YouTube">yt</a>
+            <a href="https://wa.me/201204856591" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp" aria-label="WhatsApp">wa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 EST Math - All Rights Reserved | Supervised by <strong>Eyad Mahmoud Mohamed</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/explanations.js"></script>
+</body>
+</html>
